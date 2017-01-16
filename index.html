@@ -1,0 +1,236 @@
+<html>
+
+   <head>
+
+    <title>Maze Generator</title>
+
+    <link rel="stylesheet" href="css/main.css" type="text/css" media="screen"/>
+
+ <link rel="stylesheet" href="css/print.css" type="text/css" media="print"/>
+
+
+    <style type="text/css">
+
+
+
+      .cell
+
+      {
+
+          float: left;
+
+          border-right: 1px solid transparent;
+
+          border-bottom: 1px solid transparent;
+
+          margin-right: -1px;
+
+          margin-bottom: -1px;
+
+          background: url(image/breadcrumb.png) no-repeat -10px;
+
+      }
+
+
+
+      .left { border-left: 1px solid BLACK; }
+
+      .right { border-right: 1px solid BLACK; }
+
+      .top { border-top: 1px solid BLACK; }
+
+      .bottom { border-bottom: 1px solid BLACK; }
+
+
+
+      .noleft { border-left: 1px solid transparent; }
+
+      .noright { border-right: 1px solid transparent; }
+
+      .notop { border-top: 1px solid transparent; }
+
+      .nobottom { border-bottom: 1px solid transparent; }
+
+
+
+      .mrow
+      {
+          float: left;
+      }
+
+
+
+      #box
+
+      {
+
+          margin: 0px auto 30px;
+
+          overflow: hidden;
+
+          padding-bottom: 2px;
+
+          background-color: WHITE;
+
+          visibility: hidden;
+
+      }
+
+
+
+      @media screen
+
+      {
+
+          #details
+
+          {
+
+            margin: 1.5em .75em .5em;
+
+            padding: 1em;
+
+            border: 1px solid #ddd;
+
+            background-color: #fff;
+
+          }
+
+
+
+          #mazeform
+
+          {
+
+            padding: .5em;
+
+            margin: auto;
+
+            border: 1px solid #ddd;
+
+            background-color: #f4f4f4;
+
+          }
+
+		
+
+
+      }
+
+
+
+      @media print
+
+      {
+
+          #details { display: none; }
+
+      }
+
+
+
+      .cell {height: 10px;} /* this rule must next to last */
+
+      .cell {width:  10px;} /* this rule must be last */
+
+
+
+    </style>
+
+    <script type="text/javascript" src="script/maze.js"></script>
+
+    <script type="text/javascript" src="script/solve.js"></script>
+	<script>
+/*window.addEventListener("keypress",why,false);
+function why(e)
+{
+           if (e.keytype == 65) {
+        alert("The 'a' key is pressed.");
+    }
+}*/
+window.addEventListener('keydown', doKeyDown, true)
+function doKeyDown(e){
+
+   //====================
+   // THE W KEYwww
+   //====================
+   if (e.keyCode == 87)
+   ply(0);
+   //down
+   if (e.keyCode == 83)
+   ply(1);
+   
+   //a
+   if (e.keyCode == 65)
+   ply(2);
+   //d
+   if (e.keyCode == 68)
+   ply(3);
+   
+   
+
+}
+</script>
+
+  </head>
+
+  <body>
+
+    
+
+    <div id="content">
+
+      <div id="details">
+
+        <h4 style="margin-bottom: 1em;"><a>Maze Generator</a></h4>
+
+        <form id="mazeform" action="javascript:">
+
+          <table width="100%">
+
+            <tbody>
+
+              <tr>
+
+                <td width="5%">Rows:</td>
+
+                <td><input class="txtin" style="width: 60px;" value="10" name="n" type="text" /></td>                
+
+               
+
+              </tr>
+
+              <tr>
+
+                <td>Columns:</td>
+
+                <td><input class="txtin" style="width: 60px;" value="10" name="m" type="text" /></td>
+
+              </tr>
+
+            </tbody>
+
+          </table>
+
+          <div>
+
+            <button name="bld" onclick="build()" disabled="disabled">Generate</button>
+<button name="oooo" onclick="ply(0)" disabled="disabled">PLAY</button>
+            <button name="slv" onclick="solve()" disabled="disabled">Solve</button>
+
+          </div>
+
+        </form>
+
+      </div>
+
+     
+
+    </div>
+
+    <div id="box"></div>
+  </script>
+
+  </body>
+
+</html>
